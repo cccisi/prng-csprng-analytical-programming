@@ -1,0 +1,90 @@
+The linear congruential generator is a very simple example of a random number generator. All linear congruential generators use this formula:
+
+r_{n + 1} = a \times r_n + c \pmod m
+Where:
+
+r0 is a seed.
+r1, r2, r3, …, are the random numbers.
+a, c, m are constants.
+If one chooses the values of a, c and m with care, then the generator produces a uniform distribution of integers from 0 to m − 1.
+
+LCG numbers have poor quality. rn and rn + 1 are not independent, as true random numbers would be. Anyone who knows rn can predict rn + 1, therefore LCG is not cryptographically secure. The LCG is still good enough for simple tasks like Miller-Rabin primality test, or FreeCell deals. Among the benefits of the LCG, one can easily reproduce a sequence of numbers, from the same r0. One can also reproduce such sequence with a different programming language, because the formula is so simple.
+
+The task is to replicate two historic random number generators. One is the rand() function from BSD libc, and the other is the rand() function from the Microsoft C Runtime (MSCVRT.DLL). Each replica must yield the same sequence of integers as the original generator, when starting from the same seed.
+
+In these formulas, the seed becomes state0. The random sequence is rand1, rand2 and so on.
+
+BSD formula:
+
+state_{n + 1} = 1103515245 \times state_n + 12345 \pmod{2^{31}}
+randn = staten
+randn is in range 0 to 2147483647.
+Microsoft formula:
+
+state_{n + 1} = 214013 \times state_n + 2531011 \pmod{2^{31}}
+rand_n = state_n \div 2^{16}
+randn is in range 0 to 32767.
+
+
+#include <iostream>
+using namespace std;
+
+class mRND
+{
+public:
+	void seed(unsigned int s) { _seed = s; }
+
+protected:
+	mRND() : _seed(0), _a(0), _c(0), _m(2147483648) {}
+	int rnd() { return(_seed = (_a * _seed + _c) % _m); }
+
+	int _a, _c;
+	unsigned int _m, _seed;
+};
+class MS_RND : public mRND
+{
+public:
+	MS_RND() { _a = 214013; _c = 2531011; }
+	int rnd() { return mRND::rnd() >> 16; }
+};
+class BSD_RND : public mRND
+{
+public:
+	BSD_RND() { _a = 1103515245; _c = 12345; }
+	int rnd() { return mRND::rnd(); }
+};
+int main(int argc, char* argv[])
+{
+	BSD_RND bsd_rnd;
+	MS_RND ms_rnd;
+
+	cout << "10 random numbers:" << endl ;
+	int a[10];
+	for (int x = 0; x < 10; x++) {
+		a[x] = ms_rnd.rnd();
+		cout << a[x] << endl;
+	}
+	int m, n, j, r;
+	int	sum = 0;
+
+	for (j = 0; j < 10; j += 2)
+	{
+		m = a[j];
+		n = a[j + 1];
+		do
+		{
+			r = m%n;
+			m = n;
+			n = r;
+		} while (r != 0);
+		if (m == 1)
+			sum = sum + 1;
+	}
+
+	double Pi, p;
+	p = 30.0 / sum;
+	Pi = sqrt(p);
+	cout << "Estimate value of Pi is: " << Pi << "\n";
+	system("pause");
+	return 0;
+}
