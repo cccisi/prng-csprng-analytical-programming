@@ -1,7 +1,3 @@
-/**
- *
- * @author test
- */
 public class LFSR {
 
     private boolean[] lfsr;
