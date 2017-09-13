@@ -39,7 +39,7 @@ public class bbs {
  }
 
 
-main class:
+/**main class:**/
 Print numbers main class:
 public class main {
    
@@ -60,6 +60,7 @@ public class main {
    
    }
 
+/**Print numbers main class:**/
 public class main {
 	
     public main(String[] args) {
