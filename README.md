@@ -6,11 +6,11 @@ Proof
 First of all, fix an integer n, as in the second formulation of the theorem.
 We are going to make a little of enumeration by counting the number of couples (i, j) where i and j are inferior to n and prime between them...
 
-1. First condition that they are prime between them is that they are not both multiple of 2. As a number out of two is multiple of 2 , the probability that i and j are divisible by 2 is 1/2*1/2=1/2 2 .
-So the probability that i and j are not multiple of 2 is (1-1/2 2).
+1. First condition that they are prime between them is that they are not both multiple of 2. As a number out of two is multiple of 2 , the probability that i and j are divisible by 2 is 1/2*1/2=1/2^2 .
+So the probability that i and j are not multiple of 2 is (1-1/2^2).
 
-2. Second condition is that i and j are not both multiple of 3. As well as previously, this probability is equal to (1-1/3 2).
-As these conditions are independent, the probability that i and j are neither multiple of 2 nor 3 is (1-1/22)(1-1/32).
+2. Second condition is that i and j are not both multiple of 3. As well as previously, this probability is equal to (1-1/3^2).
+As these conditions are independent, the probability that i and j are neither multiple of 2 nor 3 is (1-1/2^2)(1-1/3^2).
 Now i and j will be prime between them if they are not both multiple of any integer, that is to say any prime number both, because any number is decomposable into first factors. By continuing for all the prime numbers the previous conditions, we obtain that probability Pthat i and j are prime between them is equal to, when n tends to the infinity: 
 
 ![graph](image/1.PNG)
@@ -74,7 +74,7 @@ Many aspects of cryptography require random numbers.Examples include:
 
 ## Mersenne Twister
 
-The Mersenne Twister is a pseudorandom number generator (PRNG). It is by far the most widely used general-purpose PRNG. Its name derives from the fact that its period length is chosen to be a Mersenne prime. The Mersenne Twister was developed in 1997 by Makoto Matsumoto and Takuji Nishimura. It was designed specifically to rectify most of the flaws found in older PRNGs. It was the first PRNG to provide fast generation of high-quality pseudorandom integers. The most commonly used version of the Mersenne Twister algorithm is based on the Mersenne prime 219937−1. The standard implementation of that, MT19937, uses a 32-bit word length. There is another implementation that uses a 64-bit word length, MT19937-64; it generates a different sequence. 
+The Mersenne Twister is a pseudorandom number generator (PRNG). It is by far the most widely used general-purpose PRNG. Its name derives from the fact that its period length is chosen to be a Mersenne prime. The Mersenne Twister was developed in 1997 by Makoto Matsumoto and Takuji Nishimura. It was designed specifically to rectify most of the flaws found in older PRNGs. It was the first PRNG to provide fast generation of high-quality pseudorandom integers. The most commonly used version of the Mersenne Twister algorithm is based on the Mersenne prime 2^19937−1. The standard implementation of that, MT19937, uses a 32-bit word length. There is another implementation that uses a 64-bit word length, MT19937-64; it generates a different sequence. 
 
 ![graph](image/5.PNG)
 
@@ -90,11 +90,11 @@ Visualisation of generation of pseudo-random numbers in [0, 8] using a linear co
 
 ## Multiply with Carry
 
-In computer science, multiply-with-carry (MWC) is a method invented by George Marsaglia for generating sequences of random integers based on an initial set from two to many thousands of randomly chosen seed values. The main advantages of the MWC method are that it invokes simple computer integer arithmetic and leads to very fast generation of sequences of random numbers with immense periods, ranging from around 260 to 22000000.
+In computer science, multiply-with-carry (MWC) is a method invented by George Marsaglia for generating sequences of random integers based on an initial set from two to many thousands of randomly chosen seed values. The main advantages of the MWC method are that it invokes simple computer integer arithmetic and leads to very fast generation of sequences of random numbers with immense periods, ranging from around 2^60 to 2^2000000.
 
 As with all pseudorandom number generators, the resulting sequences are functions of the supplied seed values.
 
-A MWC sequence is based on arithmetic modulo a base b, usually b = 232, because arithmetic modulo of that b is automatic in most computers. However, sometimes a base such as b = 2^32 − 1 is used, because arithmetic for modulus 232 − 1 requires only a simple adjustment from that for 232, and theory for MWC sequences based on modulus 232 has some nagging difficulties avoided by using b = 232 − 1.
+A MWC sequence is based on arithmetic modulo a base b, usually b = 2^32, because arithmetic modulo of that b is automatic in most computers. However, sometimes a base such as b = 2^32 − 1 is used, because arithmetic for modulus 232 − 1 requires only a simple adjustment from that for 2^32, and theory for MWC sequences based on modulus 232 has some nagging difficulties avoided by using b = 2^32 − 1.
 
 In its most common form, a lag-r MWC generator requires a base b, a multiplier a, and a set of r+1 random seed values, consisting of r residues of b, x0, x1, x2 ,..., xr−1, and an initial carry cr−1 < a. The lag-r MWC sequence is then a sequence of pairs xn, cn determined by
 
