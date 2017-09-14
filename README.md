@@ -12,6 +12,12 @@ So the probability that i and j are not multiple of 2 is (1-1/2 2).
 2. Second condition is that i and j are not both multiple of 3. As well as previously, this probability is equal to (1-1/3 2).
 As these conditions are independent, the probability that i and j are neither multiple of 2 nor 3 is (1-1/22)(1-1/32).
 Now i and j will be prime between them if they are not both multiple of any integer, that is to say any prime number both, because any number is decomposable into first factors. By continuing for all the prime numbers the previous conditions, we obtain that probability Pthat i and j are prime between them is equal to, when n tends to the infinity:
+
+#
+
+![graph](image/1.PNG)
  
 This means that looked probability is :
 P =  
+
+![graph](image/2.PNG)
