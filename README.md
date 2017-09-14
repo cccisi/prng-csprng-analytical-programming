@@ -36,3 +36,33 @@ As the word ‘pseudo’ suggests, pseudo-random numbers are not random in the w
 ## True Random Number Generators (TRNGs)
 
 In comparison with PRNGs, TRNGs extract randomness from physical phenomena and introduce it into a computer. You can imagine this as a die connected to a computer, but typically people use a physical phenomenon that is easier to connect to a computer than a die is. The physical phenomenon can be very simple, like the little variations in somebody's mouse movements or in the amount of time between keystrokes. 
+
+## Comparison of PRNGs and TRNGs
+
+The table below sums up the characteristics of the two types of random number generators.
+
+![graph](image/3.PNG)
+
+The following table contains a summary of which applications are best served by which type of generator:
+
+![graph](image/4.PNG)
+
+#
+
+There are essentially two categories of algorithms used to produce pseudo-random strings of bits.
+
+## Heuristic pseudo random number generators (PRNGs)
+
+A pseudorandom number generator (PRNG), also known as a deterministic random bit generator (DRBG), is an algorithm for generating a sequence of numbers whose properties approximate the properties of sequences of random numbers. The PRNG-generated sequence is not truly random, because it is completely determined by a relatively small set of initial values, called the PRNG's seed (which may include truly random values). Although sequences that are closer to truly random can be generated using hardware random number generators, pseudorandom number generators are important in practice for their speed in number generation and their reproducibility. Examples include:
+
+	Mersernne Twister 
+	Linear Congruential PRNG 
+	Multiply with Carry 
+	Linear Feedback Shift Register
+
+## Cryptographically secure (or strong) pseudo random number generators (CSPRNGs):
+
+A cryptographically secure pseudo-random number generator (CSPRNG) or cryptographic pseudo-random number generator (CPRNG)is a pseudo-random number generator (PRNG) with properties that make it suitable for use in cryptography.
+Many aspects of cryptography require random numbers.Examples include:
+
+	Blum Blum Shub (BBS)
