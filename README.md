@@ -63,12 +63,66 @@ A pseudorandom number generator (PRNG), also known as a deterministic random bit
 
 	Linear Feedback Shift Register
 
-## Cryptographically secure (or strong) pseudo random number generators (CSPRNGs):
+## Cryptographically secure (or strong) pseudo random number generators (CSPRNGs)
 
 A cryptographically secure pseudo-random number generator (CSPRNG) or cryptographic pseudo-random number generator (CPRNG)is a pseudo-random number generator (PRNG) with properties that make it suitable for use in cryptography.
 Many aspects of cryptography require random numbers.Examples include:
 
 	Blum Blum Shub (BBS)
 
-## Algorithms/Generators Introduction:
+## Algorithms/Generators Introduction
 
+## Mersenne Twister
+
+The Mersenne Twister is a pseudorandom number generator (PRNG). It is by far the most widely used general-purpose PRNG. Its name derives from the fact that its period length is chosen to be a Mersenne prime. The Mersenne Twister was developed in 1997 by Makoto Matsumoto and Takuji Nishimura. It was designed specifically to rectify most of the flaws found in older PRNGs. It was the first PRNG to provide fast generation of high-quality pseudorandom integers. The most commonly used version of the Mersenne Twister algorithm is based on the Mersenne prime 219937−1. The standard implementation of that, MT19937, uses a 32-bit word length. There is another implementation that uses a 64-bit word length, MT19937-64; it generates a different sequence. 
+
+![graph](image/5.PNG)
+
+Visualisation of generation of pseudo-random 32-bit integers using a Mersenne Twister. The 'Extract number' section shows an example where integer 0 has already been output and the index is at integer 1. 'Generate numbers' is run when all integers have been output.
+
+## Linear Congruential PRNG
+
+A linear congruential generator (LCG) is an algorithm that yields a sequence of pseudo-randomized numbers calculated with a discontinuous piecewise linear equation. The method represents one of the oldest and best-known pseudorandom number generator algorithms.[1] The theory behind them is relatively easy to understand, and they are easily implemented and fast, especially on computer hardware which can provide modulo arithmetic by storage-bit truncation. The generator is defined by the recurrence relation:
+
+![graph](image/6.PNG)
+
+Visualisation of generation of pseudo-random numbers in [0, 8] using a linear congruential generator. The top two rows show a generator with m = 9, a = 2 and c = 0 outputting numbers from left to right until the output equals the seed, when the sequence repeats. A seed of 1 gives a cycle length of 6 but a seed of 3 gives a cycle length of only 2. Using a = 4 and c = 1 (bottom row) gives a full cycle length of 9 with any seed.
+
+## Multiply with Carry
+
+In computer science, multiply-with-carry (MWC) is a method invented by George Marsaglia for generating sequences of random integers based on an initial set from two to many thousands of randomly chosen seed values. The main advantages of the MWC method are that it invokes simple computer integer arithmetic and leads to very fast generation of sequences of random numbers with immense periods, ranging from around 260 to 22000000.
+
+As with all pseudorandom number generators, the resulting sequences are functions of the supplied seed values.
+
+A MWC sequence is based on arithmetic modulo a base b, usually b = 232, because arithmetic modulo of that b is automatic in most computers. However, sometimes a base such as b = 2^32 − 1 is used, because arithmetic for modulus 232 − 1 requires only a simple adjustment from that for 232, and theory for MWC sequences based on modulus 232 has some nagging difficulties avoided by using b = 232 − 1.
+
+In its most common form, a lag-r MWC generator requires a base b, a multiplier a, and a set of r+1 random seed values, consisting of r residues of b, x0, x1, x2 ,..., xr−1, and an initial carry cr−1 < a. The lag-r MWC sequence is then a sequence of pairs xn, cn determined by
+
+![graph](image/7.PNG)
+
+## Linear feedback shift register
+
+In computing, a linear-feedback shift register (LFSR) is a shift register whose input bit is a linear function of its previous state.
+The most commonly used linear function of single bits is exclusive-or (XOR). Thus, an LFSR is most often a shift register whose input bit is driven by the XOR of some bits of the overall shift register value.
+
+The initial value of the LFSR is called the seed, and because the operation of the register is deterministic, the stream of values produced by the register is completely determined by its current (or previous) state. Likewise, because the register has a finite number of possible states, it must eventually enter a repeating cycle. However, an LFSR with a well-chosen feedback function can produce a sequence of bits which appears random and which has a very long cycle.
+
+Applications of LFSRs include generating pseudo-random numbers, pseudo-noise sequences, fast digital counters, and whitening sequences. Both hardware and software implementations of LFSRs are common.
+
+The mathematics of a cyclic redundancy check, used to provide a quick check against transmission errors, are closely related to those of an LFSR.
+
+In its most common form, a lag-r MWC generator requires a base b, a multiplier a, and a set of r+1 random seed values, consisting of r residues of b, x0, x1, x2 ,..., xr−1, and an initial carry cr−1 < a. The lag-r MWC sequence is then a sequence of pairs xn, cn determined by
+
+![graph](image/8.PNG)
+
+A 4-bit Fibonacci LFSR with its state diagram. The XOR gate provides feedback to the register that shifts bits from left to right. The maximal sequence consists of every possible state except the "0000" state.
+
+## Blum Blum Shub 
+
+Blum Blum Shub (B.B.S.) is a pseudorandom number generator proposed in 1986 by Lenore Blum, Manuel Blum and Michael Shub [1] that is derived from Michael O. Rabin's oblivious transfer mapping.
+
+Blum Blum Shub takes the form ![graph](image/9.PNG),where M = pq is the product of two large primes p and q. At each step of the algorithm, some output is derived from xn+1; the output is commonly either the bit parity of xn+1 or one or more of the least significant bits of xn+1. The seed x0 should be an integer that is co-prime to M (i.e. p and q are not factors of x0) and not 1 or 0. The two primes, p and q, should both be congruent to 3 (mod 4) (this guarantees that each quadratic residue has one square root which is also a quadratic residue) and gcd(φ(p − 1), φ(q − 1)) should be small (this makes the cycle length large).
+
+An interesting characteristic of the Blum Blum Shub generator is the possibility to calculate any xi value directly (via Euler's Theorem):
+
+![graph](image/10.PNG)
