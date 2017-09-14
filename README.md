@@ -17,4 +17,4 @@ Now i and j will be prime between them if they are not both multiple of any inte
  
 This means that looked probability is :
 
-P = ![graph](image/2.PNG)
+![graph](image/2.PNG)
