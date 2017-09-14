@@ -111,8 +111,6 @@ Applications of LFSRs include generating pseudo-random numbers, pseudo-noise seq
 
 The mathematics of a cyclic redundancy check, used to provide a quick check against transmission errors, are closely related to those of an LFSR.
 
-In its most common form, a lag-r MWC generator requires a base b, a multiplier a, and a set of r+1 random seed values, consisting of r residues of b, x0, x1, x2 ,..., xr−1, and an initial carry cr−1 < a. The lag-r MWC sequence is then a sequence of pairs xn, cn determined by
-
 ![graph](image/8.PNG)
 
 A 4-bit Fibonacci LFSR with its state diagram. The XOR gate provides feedback to the register that shifts bits from left to right. The maximal sequence consists of every possible state except the "0000" state.
