@@ -56,8 +56,11 @@ There are essentially two categories of algorithms used to produce pseudo-random
 A pseudorandom number generator (PRNG), also known as a deterministic random bit generator (DRBG), is an algorithm for generating a sequence of numbers whose properties approximate the properties of sequences of random numbers. The PRNG-generated sequence is not truly random, because it is completely determined by a relatively small set of initial values, called the PRNG's seed (which may include truly random values). Although sequences that are closer to truly random can be generated using hardware random number generators, pseudorandom number generators are important in practice for their speed in number generation and their reproducibility. Examples include:
 
 	Mersernne Twister 
+
 	Linear Congruential PRNG 
+
 	Multiply with Carry 
+
 	Linear Feedback Shift Register
 
 ## Cryptographically secure (or strong) pseudo random number generators (CSPRNGs):
@@ -66,3 +69,6 @@ A cryptographically secure pseudo-random number generator (CSPRNG) or cryptograp
 Many aspects of cryptography require random numbers.Examples include:
 
 	Blum Blum Shub (BBS)
+
+## Algorithms/Generators Introduction:
+
